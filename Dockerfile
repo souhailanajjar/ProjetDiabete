@@ -11,9 +11,9 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 ARG CACHEBUSTS=1
-RUN git clone https://github.com/User-0041/Data 
+RUN git clone https://github.com/souhailanajjar/ProjetDiabete 
 
-WORKDIR /app/Data
+WORKDIR /app/ProjetDiabete
 
 RUN pip3 install -r requirements.txt
 RUN pip3 install streamlit
@@ -21,4 +21,4 @@ EXPOSE 8501
 
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
-ENTRYPOINT ["streamlit", "run", "Data.py", "--server.port=8501", "--server.address=0.0.0.0"]
+ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
